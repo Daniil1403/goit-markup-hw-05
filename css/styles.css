@@ -267,6 +267,63 @@ body {
     text-align: center;
 }
 
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 1;
+    transition: opacity 250ms var(--timing-function);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    min-height: 581px;
+    min-width: 528px;
+    padding: 15px;
+
+    background-color: var(--title-white-color);
+
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 250ms var(--timing-function);
+}
+
+.button-close {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 492px;
+    top: 6px;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--title-white-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.button-span {
+    width: 18px;
+    height: 18px;
+    color: #000000;
+    text-align: center;
+}
+
 /* Section */
 
 .section {
@@ -865,47 +922,33 @@ br {
 }
 
 .thumb {
-    position: relative;
+    display: inline-block;
 }
 
 .picture {
     display: block;
 }
 
-.thumb::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 294px;
-    opacity: 0;
-    transform: translateY(100%);
-
-    background-color: var(--accent-color);
-
-    transition: opacity 250ms var(--timing-function);
-}
-
-.thumb:hover::before {
-    opacity: 1;
-    transform: translateY(0);
+.product-overlay {
+    position: relative;
+    overflow: hidden;
 }
 
 .hover-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
     width: 100%;
     height: 100%;
     padding: 63px 24px;
+    background-color: var(--accent-color);
 
-    transition: opacity 250ms var(--timing-function);
+    transform: translateY(100%);
+    transition: transform 250ms var(--timing-function);
 }
 
-.hover-overlay:hover {
-    opacity: 1;
+.services .thumb:hover .hover-overlay,
+.sservices .thumb:focus .hover-overlay {
     transform: translateY(0);
 }
 
